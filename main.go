@@ -19,6 +19,5 @@ func main() {
 			arithmetic.Operator{},
 		},
 	}
-
 	fmt.Println(lex.Tokenize("(1 + 2) + (3 / 2 + (3 + 31))"))
 }
