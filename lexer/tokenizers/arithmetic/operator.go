@@ -1,6 +1,8 @@
 package arithmetic
 
 import (
+	"strings"
+
 	"github.com/dywoq/dywoqlang/lexer/token"
 	"github.com/dywoq/dywoqlang/lexer/token/arithmetic"
 )
@@ -8,21 +10,17 @@ import (
 type Operator struct{}
 
 func (Operator) Tokenize(char string) token.Token {
-	if char == "+" {
-		return token.Token{Kind: arithmetic.OperatorPlus, Value: char}
+	if strings.HasPrefix(char, "+") {
+		return token.Token{Kind: arithmetic.OperatorPlus, Value: "+"}
 	}
-
-	if char == "-" {
-		return token.Token{Kind: arithmetic.OperatorMinus, Value: char}
+	if strings.HasPrefix(char, "-") {
+		return token.Token{Kind: arithmetic.OperatorMinus, Value: "-"}
 	}
-
-	if char == "/" {
-		return token.Token{Kind: arithmetic.OperatorDivide, Value: char}
+	if strings.HasPrefix(char, "/") {
+		return token.Token{Kind: arithmetic.OperatorDivide, Value: "/"}
 	}
-
-	if char == "*" {
-		return token.Token{Kind: arithmetic.OperatorMultiply, Value: char}
+	if strings.HasPrefix(char, "*") {
+		return token.Token{Kind: arithmetic.OperatorMultiply, Value: "*"}
 	}
-
 	return token.Token{Kind: token.Unknown, Value: char}
 }

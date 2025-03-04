@@ -9,10 +9,10 @@ import (
 type Number struct{}
 
 func (Number) Tokenize(char string) token.Token {
-	re := regexp.MustCompile(`^\d+$`)
-	if re.MatchString(char) {
-		return token.Token{Kind: token.Number, Value: char}
+	re := regexp.MustCompile(`^(\d+)`)
+	matches := re.FindStringSubmatch(char)
+	if len(matches) > 1 {
+		return token.Token{Kind: token.Number, Value: matches[1]}
 	}
-
 	return token.Token{Kind: token.Unknown, Value: char}
 }
