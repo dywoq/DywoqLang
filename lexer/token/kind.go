@@ -10,4 +10,5 @@ const (
 	EOF         Kind = "EOF"
 	LeftParen   Kind = "LeftParen"
 	RightParen  Kind = "RightParen"
+	Unknown     Kind = "Unknown"
 )
